@@ -2,13 +2,22 @@
 const express = require('express');
 const sequelize = require('./config/connection');
 const exphbs = require('express-handlebars');
+const session = require('express-session');
 const path = require('path');
 // files 
-const routes = require('./controllers');
+const controllers = require('./controllers');
 
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Set up sessions
+const sess = {
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+};
+app.use(session(sess));
 
 // Handlebars.js engine 
 const hbs = exphbs.create();
@@ -23,13 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(routes);
-
-// router.get('/', async (req, res) => {
-//   // Send the rendered Handlebars.js template back as the response
-//   res.render('main');
-// });
-
+app.use(controllers);
 
 // sync sequelize models to the database, then turn on the server
 sequelize.sync().then(() => {
