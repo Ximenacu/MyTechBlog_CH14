@@ -1,4 +1,4 @@
-// hi
+// 
 const loginFormHandler = async (event) => {
     event.preventDefault();
   
@@ -6,14 +6,14 @@ const loginFormHandler = async (event) => {
     const password = document.querySelector('#password-login').value.trim();
   
     if (email && password) {
-      const response = await fetch('/login', {
+      const response = await fetch('/api/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/api/dashboard');
       } else {
         alert('Failed to log in.');
       }

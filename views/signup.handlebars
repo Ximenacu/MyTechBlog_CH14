@@ -1,4 +1,4 @@
-<div class="login-card">
+{{!-- <div class="login-card">
     <h2 class="page-title">Signup</h2>
     <form class="form signup-form">
       <div class="form-group">
@@ -19,6 +19,37 @@
     </form>
     <h2>Already have an account?</h2>
     <button class="btn btn-primary" type="submit"><a href="/users">Log In</a></button>
-  </div>
+  </div>--}}
 
-<script src="../public/js/signup.js"></script>
+
+
+<div style="padding: 5%">
+    <form class="signup-form">
+      <div class="form-group">
+          <label>Create your Username</label>
+          <input type="username" class="form-control" id="signUpUser" placeholder="Enter Username">
+          {{!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+      </div>
+      <div class="form-group">
+          <label>Email address</label>
+          <input type="email" class="form-control" id="signUpMail" placeholder="Enter email">
+          {{!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+      </div>
+      <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" id="signUpPassword" placeholder="Password">
+      </div>
+      <div class="form-group">
+          <label>Retype your Password</label>
+          <input type="password" class="form-control" id="signUpPassword2" placeholder="Retype Password">
+      </div>
+      {{!-- <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div> --}}
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    Already have an account?
+    <button type="submit" class="btn btn-secondary"><a href="/api/login">Login</a></button>
+</div>
+<script src="../js/signup.js"></script> 

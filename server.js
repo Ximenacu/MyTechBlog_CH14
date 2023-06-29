@@ -16,6 +16,9 @@ const sess = {
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false,
+  cookie: {
+    maxAge: 3 * 60 * 60 * 1000, // 3 hours in milliseconds
+  },
 };
 app.use(session(sess));
 
