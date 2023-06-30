@@ -1,10 +1,10 @@
 const sequelize = require('../config/connection');
 
-const {Users,Posts} = require('../models');
+const {Users,Posts, Comments} = require('../models');
 
 const userData = require('./userData.json');
 const postData = require('./postData.json');
-// const searchData = require('./searchData.json');
+const commentData = require('./commentData.json');
 // const reviewData = require('./reviews.json');
 
 // Function to seed db
@@ -19,10 +19,10 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-//   const search = await Search.bulkCreate(searchData, {
-//     individualHooks: true,
-//     returning: true,
-//   });
+  const comments = await Comments.bulkCreate(commentData, {
+    individualHooks: true,
+    returning: true,
+  });
 
 //   const reviews = await Review.bulkCreate(reviewData, {
 //     individualHooks: true,

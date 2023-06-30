@@ -18,11 +18,14 @@ router.post('/', async (req, res) => {
         email: req.body.email,
         password: req.body.password,
       });
-  
-      // Set up sessions with a 'loggedIn' variable set to `true`
+      // console.log("---dbUserData: ", dbUserData)
+
       req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.userName = dbUserData.dataValues.userName;
+        req.session.userId = dbUserData.dataValues.id;
         res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
+        // console.log("...........", req.session);
       });
     //   res.status(200).json(dbUserData);
     } catch (err) {
