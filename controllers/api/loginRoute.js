@@ -1,7 +1,7 @@
 // http://localhost:3001/api/login
 
 const router = require('express').Router();
-const { User } = require('../../models');
+const { Users } = require('../../models');
 
 router.get('/', async (req, res) => {
     // Send the rendered Handlebars.js template back as the response
@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 // lOGIN
 router.post('/', async (req, res) => {
     try {
-      const dbUserData = await User.findOne({
+      const dbUserData = await Users.findOne({
         where: {
           email: req.body.email,
         },

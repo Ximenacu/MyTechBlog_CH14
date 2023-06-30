@@ -1,0 +1,17 @@
+[
+    {
+      "userName": "TyrionL",
+      "email": "LionLannister@hotmail.com",
+      "password": "password2"
+    },
+    {
+      "userName": "JohnSnow",
+      "email": "knownothing@gmail.com",
+      "password": "password1"
+    },
+    {
+      "userName": "MormontJ",
+      "email": "thebear0@aol.com",
+      "password": "password3"
+    }
+]

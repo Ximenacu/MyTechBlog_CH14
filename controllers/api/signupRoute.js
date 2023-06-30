@@ -1,7 +1,7 @@
 // http://localhost:3001/api/signup
 
 const router = require('express').Router();
-const { User } = require('../../models');
+const { Users } = require('../../models');
 
 router.get('/', async (req, res) => {
     // Send the rendered Handlebars.js template back as the response
@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
     console.log("req: ",  req.body)
 
     try {
-      const dbUserData = await User.create({
+      const dbUserData = await Users.create({
         userName: req.body.username,
         email: req.body.email,
         password: req.body.password,
