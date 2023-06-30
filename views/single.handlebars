@@ -1,0 +1,25 @@
+<div class="card" style="width: 50%; margin-bottom:3%" id="{{id}}">
+    {{!-- {{#each posts}} --}}
+        {{> posts posts}}
+    {{!-- {{/each}} --}}
+
+    <p class="card-text" style="text-align:center; margin-top:2%" >{{posts.content}}</p>
+    {{!-- <a href="#" class="card-link">Add a comment.</a> --}}
+
+
+  <div class="card-footer">
+        <form class="form-inline">
+      <div class="form-group mx-sm-3 mb-2" style="display:flex;" >
+        <input class="form-control"  placeholder="Add a comment" style="margin: 1%" >
+        <button type="submit" class="btn btn-primary" style="height:35px; margin-top:1.2%" >Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card  border-info mb-3" style="width: 18rem;">
+  <div class="card-footer"></div>
+  <div class="card-footer"></div>
+  <div class="card-footer"></div>
+</div>
+
