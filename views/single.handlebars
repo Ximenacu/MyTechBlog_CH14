@@ -2,8 +2,9 @@
     {{!-- {{#each posts}} --}}
         {{> posts posts}}
     {{!-- {{/each}} --}}
-
-    <p class="card-text" style="text-align:center; margin-top:2%" >{{posts.content}}</p>
+    <div id="postContent" style="display:flex; justify-content:center; align-items:center" >
+      <p id="postContentText"  class="card-text" style="margin:1%" >{{posts.content}}</p>
+    </div>
     {{!-- <a href="#" class="card-link">Add a comment.</a> --}}
 
     <div class="card-footer">
@@ -31,3 +32,4 @@
     {{/each}}
 
 <script src="../js/addComment.js"></script> 
+<script src="../js/editDelete.js"></script> 

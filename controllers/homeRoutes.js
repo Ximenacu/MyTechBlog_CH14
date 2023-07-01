@@ -89,5 +89,30 @@ router.post('/newComment',withAuth, async (req, res) => {
 
 })
 
+// Change Password - WORKING
+router.put('/:id', async (req, res) => {
+  console.log("--------------- PUT REQ /:ID---------------")
+  console.log("id: ",req.params.id );
+  console.log("updated: ", req.body.updated);
+  try {
+    const updatedPost = await Posts.update(
+      // The field that is going to be updated in the Users model
+      {
+        content: req.body.updated,
+      },
+      // Gets a user based on the email in the request parameters
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    console.log("----updated post: ",updatedPost)
+    res.status(200).json();
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 
 module.exports = router;
