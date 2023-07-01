@@ -22,7 +22,6 @@ document.querySelector('#editBtn').addEventListener('click', async (event) =>{
 document.getElementById('postContent').addEventListener('click', async (event) => {
     if (event.target.id === 'saveChanges') {
       const updated = document.getElementById('updatedpost').value.trim();
-    //   console.log(document.location.pathname);
       const response = await fetch(`${document.location.pathname}`, {
         method: 'PUT',
         body: JSON.stringify({updated}),
@@ -32,6 +31,38 @@ document.getElementById('postContent').addEventListener('click', async (event) =
       if (response.ok) {
         console.log("response ok")
         document.location.replace(document.location.pathname);
+      } else {
+        alert('Failed to add comment.');
+      }
+    }
+  });
+
+document.querySelector('#deleteBtn').addEventListener('click', async (event) =>{
+    const sureText = document.createElement('p');
+    sureText.textContent = "Are you sure you want to Delete this post?";
+    sureText.setAttribute('style', 'margin:2% 2% 0% 0%')
+
+    const editbtn = document.createElement('button') //
+    editbtn.textContent = "I'm Sure."
+    editbtn.setAttribute("class", "btn btn-danger");
+    editbtn.setAttribute("style", "height:40px; margin-right:3%");
+    editbtn.setAttribute("id", "confirmDelete");
+
+    document.getElementById('sure').appendChild(sureText);
+    document.getElementById('sure').appendChild(editbtn);
+});
+
+document.getElementById('sure').addEventListener('click', async (event) => {
+    if (event.target.id === 'confirmDelete') {
+        console.log("button works. ")
+
+      const response = await fetch(`${document.location.pathname}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        console.log("response ok")
+        document.location.replace('/api/dashboard');
       } else {
         alert('Failed to add comment.');
       }

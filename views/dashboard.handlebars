@@ -1,6 +1,6 @@
 <h1>DASHBOARD</h1>
 <div class="card post-div" style=" margin-bottom:3%">
-    <label style="text-align:centerx" >Add a new post</label>
+    <h4 style="text-align:center" >Add a new post</h4>
     <div class="card-footer">
         <form class="form-inline">
             
@@ -14,7 +14,7 @@
 </div>
 
     {{#each myposts}}
-    <div class="card post-div" style=" margin-bottom:3%" id="{{id}}">
+    <div class="card post-div" style=" margin-bottom:3% " id="{{id}}">
         {{> posts}}
         <p class="card-text" style="text-align:center; margin-top:2%" >{{content}}</p>
     </div>    

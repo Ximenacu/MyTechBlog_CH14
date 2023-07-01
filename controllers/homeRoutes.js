@@ -114,5 +114,23 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// Delete account - WORKING
+router.delete('/:id', async (req, res) => {
+  console.log("--------------- DELETE REQ -------")
+  try {
+    Comments.destroy({
+      where: {post_id: req.params.id}
+    });
+    Posts.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json('Account succesfully deleted');
+    console.log('Post destroyed');
+  } catch (err) {
+    res.json(err);
+  }
+});
 
 module.exports = router;
