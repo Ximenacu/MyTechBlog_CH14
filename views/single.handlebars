@@ -1,4 +1,4 @@
-<div class="card post-div" style="width: 50%; margin-bottom:3%" id="{{id}}">
+<div class="card post-div" style="margin-bottom:3%" id="{{id}}">
     {{!-- {{#each posts}} --}}
         {{> posts posts}}
     {{!-- {{/each}} --}}
@@ -14,12 +14,18 @@
           </div>
         </form>
     </div>
+    {{#if posts.mine}}
+    <div class="card-footer" style="display:flex; justify-content:center;" >
+      <button id="editBtn" class="btn btn-secondary" style="margin-right:1%" >Edit Post</button>
+      <button id="deleteBtn" class="btn btn-danger">Delete Post</button>
+    </div>
+    {{/if}}
 </div>
 
     {{#each comments}}
-<div class="card  border-info mb-3" style="width: 18rem;">
+<div class="card  mb-3" style="width: 18rem;">
   <div class="card-footer">
-    <h6 class="card-subtitle mb-2">Comment by: {{user_id}},<br /> on: {{createdAt}}</h6>
+    <h6 class="card-subtitle mb-2">Comment by: {{user.userName}},<br /> on: {{createdAt}}</h6>
     {{contentt}} </div>
 </div>
     {{/each}}

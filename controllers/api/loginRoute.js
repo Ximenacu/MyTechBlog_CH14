@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
           .json({ message: 'Incorrect password. Please try again!' });
         return;
       }
-  
+      console.log("----dbUserData: ", dbUserData);
       // Once the user successfully logs in, set up the sessions variable 'loggedIn'
       req.session.save(() => {
         req.session.loggedIn = true;

@@ -2,12 +2,12 @@
     {
       "title": "My First App",
       "content": "I just deployed my first app in heroku!",
-      "user_id": "1"
+      "user_id": "2"
     },
     {
       "title": "My second App",
       "content": "I just deployed my first app in heroku!",
-      "user_id": "1"
+      "user_id": "2"
     },
     {
       "title": "My third App",

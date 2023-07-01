@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Sequelize } = require('sequelize');
-const {Posts, Comments} = require('../models')
+const {Posts, Comments, Users} = require('../models')
 const withAuth = require('../utils/auth');
 
 router.get('/favicon.ico', (req, res) => {
@@ -9,19 +9,36 @@ router.get('/favicon.ico', (req, res) => {
 
 router.get('/:id',withAuth, async (req,res) =>{
   console.log("------------------GET /:ID ------------------------")
-  console.log(":id :---", req.params.id);
+  console.log("--- id from params. id of post", req.params.id);
   const loggedIn = req.session.loggedIn;
+
+  const myID=req.session.userId;
+  console.log("---My id: id of logged user: ", myID);
+
   try {
-    const dbposts =  await Posts.findByPk(req.params.id);
+    const dbposts =  await Posts.findByPk(req.params.id, {include: [{
+      model: Users,
+      attributes: ['userName'],
+    }]});
     // console.log("----------", dbposts)
     // const posts = dbposts.map((post)=>post.get({plain: true}));
     const posts = dbposts.get({plain: true});
+    if ( posts.user_id===myID){
+      posts.mine = true;
+    } else {
+      posts.mine = false; 
+    }
     
     console.log("-----posts: ", posts);
 
     const dbcomments = await Comments.findAll({
       order: [['createdAt', 'DESC']],
-      where: {post_id: req.params.id}})
+      where: {post_id: req.params.id},
+      include: [{
+        model: Users,
+        attributes: ['userName'],
+      }]
+    })
     // console.log('-----comments: ', dbcomments)
     const comments = dbcomments.map((comment) => comment.get({ plain: true }));
     console.log('-----comments: ', comments)
@@ -38,7 +55,10 @@ router.get('/', async (req, res) => {
   console.log("------------------GET / ------------------------")
   const loggedIn = req.session.loggedIn;
   try {
-    const dbPosts = await Posts.findAll();
+    const dbPosts = await Posts.findAll({include: [{
+      model: Users,
+      attributes: ['userName'],
+    }]});
     const posts = dbPosts.map((review) => review.get({ plain: true }))
     console.log("POSTS: ----", posts);
     res.render('home', { posts, layout: 'main', loggedIn }); //,

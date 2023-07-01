@@ -1,7 +1,26 @@
 <h1>DASHBOARD</h1>
-{{!-- <button class="btn btn-dark" id="logOutBtn"><a href="">Logout</a></button> --}}
-{{!-- <script src="../js/logout.js"></script>  --}}
+<div class="card post-div" style=" margin-bottom:3%">
+    <label style="text-align:centerx" >Add a new post</label>
+    <div class="card-footer">
+        <form class="form-inline">
+            
+            <div class="form-group mx-sm-3 mb-2"  >
+                <input id="newPostTitle" class="form-control"  placeholder="Post Title" style="margin: 1%; width:35%" >
+                <input id="newPostBody" class="form-control"  placeholder="Content" style="margin: 1%" >
+                <button id="addPost" class="btn btn-primary" style="height:35px; margin-top:1.2%" >Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
 
-{{!-- {{#each mySrch}} --}}
-    {{> posts}}
-{{!-- {{/each}} --}}
+    {{#each myposts}}
+    <div class="card post-div" style=" margin-bottom:3%" id="{{id}}">
+        {{> posts}}
+        <p class="card-text" style="text-align:center; margin-top:2%" >{{content}}</p>
+    </div>    
+    {{/each}}
+
+
+
+
+<script src="../js/addPost.js"></script> 
